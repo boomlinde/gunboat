@@ -3,8 +3,8 @@ src = $(wildcard *.c)
 objects = $(patsubst %.c,%.o, $(src))
 libs = sdl2
 
-LDFLAGS = -lm $(shell pkg-config --libs $(libs))
-CFLAGS = -O3 -Wall $(shell pkg-config --cflags $(libs))
+LDFLAGS = -flto -lm $(shell pkg-config --libs $(libs))
+CFLAGS = -flto -O3 -Wall $(shell pkg-config --cflags $(libs))
 
 $(bin): $(objects)
 

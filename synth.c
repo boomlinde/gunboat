@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include "synth.h"
 #include "matrix.h"
 #include "osc.h"
 #include "folder.h"

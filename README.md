@@ -11,6 +11,8 @@ Basic controls
 * Left click and drag a slider to change its value
 * Right click a slider to restore it to its default value
 * Middle click a slider to set it to its max value
+* While hovering a slider, press backtick, 0 or number keys 1-9 to set the
+  slider to an absolute value
 
 Folding multipliers
 -------------------

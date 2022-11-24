@@ -210,6 +210,45 @@ int main(int argc, char **argv)
 					held->ctrl.target = fmax(0.0, fmin(1.0, (held->ctrl.target - e.motion.yrel * 0.002)));
 				}
 				break;
+			case SDL_KEYDOWN:
+				if (!hovered) break;
+
+				switch (e.key.keysym.sym) {
+				case SDLK_BACKQUOTE:
+					hovered->ctrl.target = 0.0;
+					break;
+				case SDLK_1:
+					hovered->ctrl.target = 0.1;
+					break;
+				case SDLK_2:
+					hovered->ctrl.target = 0.2;
+					break;
+				case SDLK_3:
+					hovered->ctrl.target = 0.3;
+					break;
+				case SDLK_4:
+					hovered->ctrl.target = 0.4;
+					break;
+				case SDLK_5:
+					hovered->ctrl.target = 0.5;
+					break;
+				case SDLK_6:
+					hovered->ctrl.target = 0.6;
+					break;
+				case SDLK_7:
+					hovered->ctrl.target = 0.7;
+					break;
+				case SDLK_8:
+					hovered->ctrl.target = 0.8;
+					break;
+				case SDLK_9:
+					hovered->ctrl.target = 0.9;
+					break;
+				case SDLK_0:
+					hovered->ctrl.target = 1.0;
+					break;
+				}
+				break;
 			case SDL_WINDOWEVENT:
 				break;
 			}

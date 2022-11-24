@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 #include "osc.h"
-#include "pitch.h"
 #include "misc.h"
 
 void osc_tick(struct osc *o, double rate)

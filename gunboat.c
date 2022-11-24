@@ -6,7 +6,6 @@
 
 #include "font.h"
 #include "synth.h"
-#include "misc.h"
 
 #define WIDTH 376
 #define HEIGHT 248

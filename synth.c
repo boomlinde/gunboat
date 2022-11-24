@@ -1,8 +1,10 @@
 #include <stdlib.h>
 
-#include "synth.h"
-#include "osc.h"
 #include "matrix.h"
+#include "osc.h"
+#include "folder.h"
+#include "filter.h"
+#include "panner.h"
 #include "misc.h"
 
 void synth_tick(struct synth *s, double rate)

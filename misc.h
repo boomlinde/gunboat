@@ -5,5 +5,6 @@
 
 double unitmod(double v);
 double clamp(double v);
+double p2f(double pitch, double range);
 
 #endif /* _MISC_H_ */

@@ -1,6 +1,5 @@
 #include <math.h>
 #include "filter.h"
-#include "pitch.h"
 #include "misc.h"
 
 void filter_tick(struct filter *f, double rate)

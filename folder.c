@@ -1,5 +1,5 @@
 #include <math.h>
-// #include "misc.h"
+
 #include "folder.h"
 
 double shaper(double level)

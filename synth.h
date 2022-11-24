@@ -6,6 +6,7 @@
 #include "folder.h"
 #include "filter.h"
 #include "panner.h"
+#include "types.h"
 
 struct synth {
 	struct osc osc1;
@@ -18,10 +19,10 @@ struct synth {
 
 	struct matrix m;
 
-	double out_left;
-	double out_right;
+	value_t out_left;
+	value_t out_right;
 };
 
-void synth_tick(struct synth *s, double rate);
+void synth_tick(struct synth *s, value_t rate);
 
 #endif /* _SYNTH_H_ */

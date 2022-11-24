@@ -1,15 +1,17 @@
 #ifndef _FOLDER_H_
 #define _FOLDER_H_
 
+#include "types.h"
+
 struct folder_ctrl {
-	_Atomic double scale;
+	param_t scale;
 };
 
 struct folder {
 	struct folder_ctrl params;
-	double bus_a;
-	double bus_b;
-	double out;
+	value_t bus_a;
+	value_t bus_b;
+	value_t out;
 };
 
 void folder_tick(struct folder *f);

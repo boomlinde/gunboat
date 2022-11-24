@@ -1,6 +1,8 @@
 #ifndef _MATRIX_H_
 #define _MATRIX_H_
 
+#include "types.h"
+
 enum sources {
 	source_osc1_out,
 	source_osc2_out,
@@ -40,15 +42,15 @@ enum sinks {
 };
 
 struct matrix_ctrl {
-	_Atomic double coefficients[n_sources][n_sinks];
+	param_t coefficients[n_sources][n_sinks];
 };
 
 struct matrix {
 	struct matrix_ctrl params;
 	char info[n_sources][n_sinks][80];
 
-	double sources[n_sources];
-	double sinks[n_sinks];
+	value_t sources[n_sources];
+	value_t sinks[n_sinks];
 };
 
 void matrix_tick(struct matrix *m);

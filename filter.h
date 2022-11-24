@@ -1,20 +1,23 @@
 #ifndef _FILTER_H_
 #define _FILTER_H_
 
+#include "types.h"
+
 struct filter_ctrl {
-	_Atomic double resonance;
+	param_t resonance;
 };
+
 struct filter {
 	struct filter_ctrl params;
 
-	double bus_cutoff;
-	double bus_input;
+	value_t bus_cutoff;
+	value_t bus_input;
 
-	double out_lp;
-	double out_hp;
-	double out_bp;
+	value_t out_lp;
+	value_t out_hp;
+	value_t out_bp;
 };
 
-void filter_tick(struct filter *f, double rate);
+void filter_tick(struct filter *f, value_t rate);
 
 #endif /* _FILTER_H_ */

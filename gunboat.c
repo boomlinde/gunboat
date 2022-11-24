@@ -6,6 +6,7 @@
 
 #include "font.h"
 #include "synth.h"
+#include "types.h"
 
 #define WIDTH 376
 #define HEIGHT 248
@@ -27,8 +28,8 @@
 void text_puts(int x, int y, char *const s);
 
 struct param {
-	_Atomic double target;
-	_Atomic double *value;
+	param_t target;
+	param_t *value;
 };
 
 struct slider {
@@ -37,9 +38,9 @@ struct slider {
 	int color;
 	int x;
 	int y;
-	_Atomic double *value;
+	param_t *value;
 	struct param ctrl;
-	double _default;
+	value_t _default;
 };
 
 void slider_draw(struct slider *s, int size);
@@ -63,7 +64,7 @@ SDL_AudioSpec audio_want = {
 };
 SDL_AudioSpec audiospec = {0};
 
-void param_smooth(struct param *p, double rate);
+void param_smooth(struct param *p, value_t rate);
 
 struct synth s = {
 	.osc1 = { .params = { .pitch = 0.5, .finetune = 0.5, .range = 1.0, }, },
@@ -75,7 +76,6 @@ struct synth s = {
 	.panner2 = { .params = { .pan = 0.5, }, },
 };
 
-_Atomic double amp = 0.0;
 struct slider sliders[] = {
 	{"~1", "pitch (oscillator 1)", OSC1_COLOR, 8, 20, &s.osc1.params.pitch},
 	{":1", "fine tune (oscillator 1)", OSC1_COLOR, 8, 52, &s.osc1.params.finetune},
@@ -358,8 +358,8 @@ void redraw(void)
 void audio_cb(void *data, Uint8 *stream, int len)
 {
 	int i, j, k;
-	const double r = audiospec.freq;
-	const double a = exp(-2 * M_PI / (40.0 * 0.001 * r));
+	const value_t r = audiospec.freq;
+	const value_t a = exp(-2 * M_PI / (40.0 * 0.001 * r));
 	float *buf = (float *)stream;
 
 	for (i = 0; i < len / sizeof(buf[0]); i += 2) {
@@ -379,11 +379,11 @@ void audio_cb(void *data, Uint8 *stream, int len)
 	}
 }
 
-void param_smooth(struct param *p, double a)
+void param_smooth(struct param *p, value_t a)
 {
-	double value = *p->value;
-	double target = p->target;
-	double b = 1.0 - a;
+	value_t value = *p->value;
+	value_t target = p->target;
+	value_t b = 1.0 - a;
 	*p->value = target * b + value * a;
 }
 

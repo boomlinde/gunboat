@@ -1,16 +1,18 @@
 #ifndef _PANNER_H_
 #define _PANNER_H_
 
+#include "types.h"
+
 struct panner_ctrl {
-	_Atomic double pan;
+	param_t pan;
 };
 
 struct panner {
 	struct panner_ctrl params;
 
-	double bus_pan;
-	double out_left;
-	double out_right;
+	value_t bus_pan;
+	value_t out_left;
+	value_t out_right;
 };
 
 void panner_tick(struct panner *p);

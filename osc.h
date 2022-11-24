@@ -1,22 +1,24 @@
 #ifndef _OSC_H_
 #define _OSC_H_
 
+#include "types.h"
+
 struct osc_ctrl {
-	_Atomic double pitch;
-	_Atomic double finetune;
-	_Atomic double range;
+	param_t pitch;
+	param_t finetune;
+	param_t range;
 };
 
 struct osc {
 	struct osc_ctrl params;
-	double phase;
+	value_t phase;
 
-	double bus_pitch;
-	double bus_phase_offset;
+	value_t bus_pitch;
+	value_t bus_phase_offset;
 
-	double out;
+	value_t out;
 };
 
-void osc_tick(struct osc *o, double rate);
+void osc_tick(struct osc *o, value_t rate);
 
 #endif /* _OSC_H_ */

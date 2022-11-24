@@ -7,10 +7,11 @@
 #include "filter.h"
 #include "panner.h"
 #include "misc.h"
+#include "types.h"
 
-void synth_tick(struct synth *s, double rate)
+void synth_tick(struct synth *s, value_t rate)
 {
-	s->m.sources[source_noise] = 2.0 * ((double)rand() / (double)RAND_MAX) - 1.0;
+	s->m.sources[source_noise] = 2.0 * ((value_t)rand() / (value_t)RAND_MAX) - 1.0;
 
 	s->osc1.bus_pitch = s->m.sinks[sink_osc1_pitch];
 	s->osc1.bus_phase_offset = s->m.sinks[sink_osc1_phase_offset];

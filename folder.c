@@ -1,8 +1,9 @@
 #include <math.h>
 
 #include "folder.h"
+#include "types.h"
 
-double shaper(double level)
+value_t shaper(value_t level)
 {
 	return asin(sin(0.5 * M_PI * level)) / (M_PI * 0.5);
 }

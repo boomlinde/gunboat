@@ -4,12 +4,13 @@
 
 #include "osc.h"
 #include "misc.h"
+#include "types.h"
 
-void osc_tick(struct osc *o, double rate)
+void osc_tick(struct osc *o, value_t rate)
 {
-	double pitch = 10.0 * 12.0 * (o->params.pitch - 0.5) + 24.0 * (o->params.finetune - 0.5);
-	double freq;
-	double phase;
+	value_t pitch = 10.0 * 12.0 * (o->params.pitch - 0.5) + 24.0 * (o->params.finetune - 0.5);
+	value_t freq;
+	value_t phase;
 
 	pitch += (12 * 5) * (o->bus_pitch);
 	freq = p2f(pitch, 440.0 * o->params.range);

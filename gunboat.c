@@ -188,6 +188,9 @@ int main(int argc, char **argv)
 				case SDL_BUTTON_RIGHT:
 					hovered->ctrl.target = hovered->_default;
 					break;
+				case SDL_BUTTON_MIDDLE:
+					hovered->ctrl.target = 1.0;
+					break;
 				}
 				break;
 			case SDL_MOUSEBUTTONUP:

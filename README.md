@@ -13,6 +13,11 @@ Basic controls
 * Middle click a slider to set it to its max value
 * While hovering a slider, press backtick, 0 or number keys 1-9 to set the
   slider to an absolute value
+* Press the f key to toggle integer scaling. Leaving it on looks nicer, but
+  turning it off uses the window more efficiently
+* Press alt+enter to toggle full screen mode
+* Press ctrl+q to quit. OS specific application exit shortcuts should work as
+  well
 
 Folding multipliers
 -------------------

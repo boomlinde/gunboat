@@ -10,7 +10,7 @@ fi
 cc=x86_64-w64-mingw32.shared-gcc
 strp=x86_64-w64-mingw32.shared-strip
 pkgconfig=x86_64-w64-mingw32.shared-pkg-config
-dll=$MXEHOME/usr/x86_64-w64-mingw32.shared/bin/SDL2.dll
+dlldir=$MXEHOME/usr/x86_64-w64-mingw32.shared/bin
 
 if ! command -v $cc &> /dev/null ; then
 	>&2 echo "missing $cc"
@@ -28,8 +28,12 @@ if ! command -v zip &> /dev/null ; then
 	>&2 echo "missing zip"
 	exit 1
 fi
-if [ ! -f "$dll" ]; then
-	>&2 echo "missing $dll"
+if [ ! -f "$dlldir/SDL2.dll" ]; then
+	>&2 echo "missing $dlldir/SDL2.dll"
+	exit 1
+fi
+if [ ! -f "$dlldir/libsamplerate-0.dll" ]; then
+	>&2 echo "missing $dlldir/libsamplerate-0.dll"
 	exit 1
 fi
 
@@ -37,12 +41,23 @@ version=$(git describe --always --dirty)
 
 rm -f gunboat-*.zip
 make clean && make CC=$cc PKGCONFIG=$pkgconfig
-mkdir -p dist
+mkdir -p dist/licenses
 cp gunboat.exe dist/
 cp README.md dist/readme.txt
-cp $dll dist/
+cp $dlldir/SDL2.dll $dlldir/libsamplerate-0.dll dist/
+
+# Not great, but MXE doesn't bundle licenses. Checking that they are still
+# correct for the versions used is a manual job for now
+if [ ! -f "dist/licenses/libsamplerate.txt" ]; then
+	curl https://raw.githubusercontent.com/libsndfile/libsamplerate/master/COPYING >dist/licenses/libsamplerate.txt
+fi
+if [ ! -f "dist/licenses/sdl2.txt" ]; then
+	curl https://raw.githubusercontent.com/libsdl-org/SDL/main/LICENSE.txt >dist/licenses/sdl2.txt
+fi
+
 cp LICENSE dist/license.txt
 $strp dist/gunboat.exe
-zip -j gunboat-$version.zip dist/*
-rm -rf dist
+pushd dist
+zip -r ../gunboat-$version.zip *
+popd
 make clean

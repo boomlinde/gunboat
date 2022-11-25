@@ -46,14 +46,8 @@ cp gunboat.exe dist/
 cp README.md dist/readme.txt
 cp $dlldir/SDL2.dll $dlldir/libsamplerate-0.dll dist/
 
-# Not great, but MXE doesn't bundle licenses. Checking that they are still
-# correct for the versions used is a manual job for now
-if [ ! -f "dist/licenses/libsamplerate.txt" ]; then
-	curl https://raw.githubusercontent.com/libsndfile/libsamplerate/master/COPYING >dist/licenses/libsamplerate.txt
-fi
-if [ ! -f "dist/licenses/sdl2.txt" ]; then
-	curl https://raw.githubusercontent.com/libsdl-org/SDL/main/LICENSE.txt >dist/licenses/sdl2.txt
-fi
+tar -Oaxf $MXEHOME/pkg/libsamplerate-0.1.9.tar.gz libsamplerate-0.1.9/COPYING >dist/licenses/libsamplerate.txt
+tar -Oaxf $MXEHOME/pkg/sdl2-release-2.0.20.tar.gz SDL-release-2.0.20/LICENSE.txt > dist/licenses/sdl2.txt
 
 cp LICENSE dist/license.txt
 $strp dist/gunboat.exe

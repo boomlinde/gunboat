@@ -123,6 +123,10 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
+	SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_SCALING, "1");
+	SDL_SetHint(SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH, "1");
+
 	for (i = 0; i < n_sources; i++) {
 		for (j = 0; j < n_sinks; j++) {
 			int src_color = i * 128 / n_sources;
@@ -162,10 +166,8 @@ int main(int argc, char **argv)
 	}
 
 	SDL_SetRelativeMouseMode(SDL_FALSE);
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 	SDL_RenderSetLogicalSize(r, WIDTH, HEIGHT);
 	SDL_RenderSetIntegerScale(r, SDL_TRUE);
-	SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_SCALING, "1");
 	SDL_PauseAudioDevice(dev, 0);
 
 	redraw();

@@ -105,6 +105,7 @@ int main(int argc, char **argv)
 	int i;
 	int j;
 	int fullscreen = 0;
+	int return_value = 0;
 
 	SDL_bool integer_scale = SDL_TRUE;
 	SDL_Point mouse = {0};
@@ -121,8 +122,8 @@ int main(int argc, char **argv)
 	}
 
 	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_EVENTS|SDL_INIT_AUDIO)) {
-		printf("failed to init SDL: %s\n", SDL_GetError());
-		return 1;
+		fprintf(stderr, "failed to init SDL: %s\n", SDL_GetError());
+		goto err;
 	}
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
@@ -151,20 +152,26 @@ int main(int argc, char **argv)
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			2*WIDTH, 2*HEIGHT,
 			SDL_WINDOW_RESIZABLE);
-	if (!w) goto done;
+	if (!w) {
+		fprintf(stderr, "failed to create window: %s\n", SDL_GetError());
+		goto err;
+	}
 
 	r = SDL_CreateRenderer(
 			w, -1,
 			SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
-	if (!r) goto done;
+	if (!r) {
+		fprintf(stderr, "failed to create renderer: %s\n", SDL_GetError());
+		goto err;
+	}
 
 	dev = SDL_OpenAudioDevice(NULL, 0, &audio_want, &audiospec,
 			SDL_AUDIO_ALLOW_FREQUENCY_CHANGE
 			|SDL_AUDIO_ALLOW_SAMPLES_CHANGE);
 
 	if (!dev) {
-		printf("failed to open audio device: %s\n", SDL_GetError());
-		goto done;
+		fprintf(stderr, "failed to open audio device: %s\n", SDL_GetError());
+		goto err;
 	}
 
 	SDL_SetRelativeMouseMode(SDL_FALSE);
@@ -251,12 +258,15 @@ int main(int argc, char **argv)
 		redraw();
 	}
 
+	goto done;
+err:
+	return_value = 1;
 done:
 	if (dev) SDL_CloseAudioDevice(dev);
 	if (r) SDL_DestroyRenderer(r);
 	if (w) SDL_DestroyWindow(w);
 	SDL_Quit();
-	return 0;
+	return return_value;
 }
 
 void update_hovered(SDL_Point mouse)

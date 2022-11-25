@@ -178,9 +178,7 @@ int main(int argc, char **argv)
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				update_hovered(mouse);
-				if (!hovered) break;
-
-				switch(e.button.button) {
+				if (hovered) switch(e.button.button) {
 				case SDL_BUTTON_LEFT:
 					held = hovered;
 					SDL_GetMouseState(&grabpoint.x, &grabpoint.y);
@@ -195,8 +193,7 @@ int main(int argc, char **argv)
 				}
 				break;
 			case SDL_MOUSEBUTTONUP:
-				if (e.button.button != SDL_BUTTON_LEFT) break;
-				if (held) {
+				if (held && e.button.button == SDL_BUTTON_LEFT) {
 					held = NULL;
 					SDL_WarpMouseInWindow(w, grabpoint.x, grabpoint.y);
 					SDL_SetRelativeMouseMode(SDL_FALSE);
@@ -216,39 +213,17 @@ int main(int argc, char **argv)
 				if (!hovered) break;
 
 				switch (e.key.keysym.sym) {
-				case SDLK_BACKQUOTE:
-					hovered->ctrl.target = 0.0;
-					break;
-				case SDLK_1:
-					hovered->ctrl.target = 0.1;
-					break;
-				case SDLK_2:
-					hovered->ctrl.target = 0.2;
-					break;
-				case SDLK_3:
-					hovered->ctrl.target = 0.3;
-					break;
-				case SDLK_4:
-					hovered->ctrl.target = 0.4;
-					break;
-				case SDLK_5:
-					hovered->ctrl.target = 0.5;
-					break;
-				case SDLK_6:
-					hovered->ctrl.target = 0.6;
-					break;
-				case SDLK_7:
-					hovered->ctrl.target = 0.7;
-					break;
-				case SDLK_8:
-					hovered->ctrl.target = 0.8;
-					break;
-				case SDLK_9:
-					hovered->ctrl.target = 0.9;
-					break;
-				case SDLK_0:
-					hovered->ctrl.target = 1.0;
-					break;
+				case SDLK_BACKQUOTE: hovered->ctrl.target = 0.0; break;
+				case SDLK_1: hovered->ctrl.target = 0.1; break;
+				case SDLK_2: hovered->ctrl.target = 0.2; break;
+				case SDLK_3: hovered->ctrl.target = 0.3; break;
+				case SDLK_4: hovered->ctrl.target = 0.4; break;
+				case SDLK_5: hovered->ctrl.target = 0.5; break;
+				case SDLK_6: hovered->ctrl.target = 0.6; break;
+				case SDLK_7: hovered->ctrl.target = 0.7; break;
+				case SDLK_8: hovered->ctrl.target = 0.8; break;
+				case SDLK_9: hovered->ctrl.target = 0.9; break;
+				case SDLK_0: hovered->ctrl.target = 1.0; break;
 				}
 				break;
 			case SDL_WINDOWEVENT:

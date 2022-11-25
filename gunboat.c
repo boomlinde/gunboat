@@ -106,6 +106,7 @@ int main(int argc, char **argv)
 	int j;
 	int fullscreen = 0;
 
+	SDL_bool integer_scale = SDL_TRUE;
 	SDL_Point mouse = {0};
 	SDL_Event e;
 	SDL_Point grabpoint = {0};
@@ -168,7 +169,7 @@ int main(int argc, char **argv)
 
 	SDL_SetRelativeMouseMode(SDL_FALSE);
 	SDL_RenderSetLogicalSize(r, WIDTH, HEIGHT);
-	SDL_RenderSetIntegerScale(r, SDL_TRUE);
+	SDL_RenderSetIntegerScale(r, integer_scale);
 	SDL_PauseAudioDevice(dev, 0);
 
 	redraw();
@@ -233,6 +234,12 @@ int main(int argc, char **argv)
 					fullscreen = !fullscreen;
 					SDL_SetWindowFullscreen(w, fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
 					break;
+				case SDLK_f:
+					integer_scale = !integer_scale;
+					SDL_RenderSetIntegerScale(r, integer_scale);
+					break;
+				case SDLK_q:
+					if (e.key.keysym.mod & KMOD_CTRL) goto done;
 				}
 
 				break;

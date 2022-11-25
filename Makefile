@@ -32,4 +32,4 @@ font.h: font.bin
 	xxd -i font.bin > font.h
 
 clean:
-	-rm -f $(bin) $(objects) font.h
+	-rm -f $(bin) $(bin).exe $(objects) font.h

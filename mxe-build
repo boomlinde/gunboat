@@ -58,6 +58,6 @@ fi
 cp LICENSE dist/license.txt
 $strp dist/gunboat.exe
 pushd dist
-zip -r ../gunboat-$version.zip *
+zip -r ../gunboat-win-x64-$version.zip *
 popd
 make clean

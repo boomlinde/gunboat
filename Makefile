@@ -5,7 +5,8 @@ libs = sdl2
 
 PKGCONFIG ?= pkg-config
 
-LDFLAGS = -flto -ffast-math -lm $(shell $(PKGCONFIG) --libs $(libs))
+LDFLAGS = -flto -ffast-math
+LDLIBS = -lm $(shell $(PKGCONFIG) --libs $(libs))
 CFLAGS = -flto -O3 -Wall $(shell $(PKGCONFIG) --cflags $(libs))
 
 $(bin): $(objects)

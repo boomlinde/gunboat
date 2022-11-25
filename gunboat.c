@@ -104,6 +104,7 @@ int main(int argc, char **argv)
 {
 	int i;
 	int j;
+	int fullscreen = 0;
 
 	SDL_Point mouse = {0};
 	SDL_Event e;
@@ -212,9 +213,7 @@ int main(int argc, char **argv)
 				}
 				break;
 			case SDL_KEYDOWN:
-				if (!hovered) break;
-
-				switch (e.key.keysym.sym) {
+				if (hovered) switch (e.key.keysym.sym) {
 				case SDLK_BACKQUOTE: hovered->ctrl.target = 0.0; break;
 				case SDLK_1: hovered->ctrl.target = 0.1; break;
 				case SDLK_2: hovered->ctrl.target = 0.2; break;
@@ -227,6 +226,15 @@ int main(int argc, char **argv)
 				case SDLK_9: hovered->ctrl.target = 0.9; break;
 				case SDLK_0: hovered->ctrl.target = 1.0; break;
 				}
+
+				switch (e.key.keysym.sym) {
+				case SDLK_RETURN:
+					if (!(e.key.keysym.mod & KMOD_ALT)) break;
+					fullscreen = !fullscreen;
+					SDL_SetWindowFullscreen(w, fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+					break;
+				}
+
 				break;
 			case SDL_WINDOWEVENT:
 				break;

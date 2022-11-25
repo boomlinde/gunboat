@@ -1,3 +1,4 @@
 *.o
 gunboat
+gunboat.exe
 font.h

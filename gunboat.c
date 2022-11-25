@@ -24,6 +24,7 @@
 #define FOLDER_COLOR 0x20b000
 #define FILTER_COLOR 0xb020b0
 #define PANNER_COLOR 0x8080b0
+#define DCBLOCKER_COLOR 0x2080b0
 
 void text_puts(int x, int y, char *const s);
 
@@ -91,7 +92,8 @@ struct slider sliders[] = {
 	{"p1", "panner 1", PANNER_COLOR, 8, 148, &s.panner1.params.pan},
 	{"p2", "panner 2", PANNER_COLOR, 40, 148, &s.panner2.params.pan},
 
-	{"fr", "filter resonance", FILTER_COLOR, 24, 180, &s.filter.params.resonance},
+	{"fr", "filter resonance", FILTER_COLOR, 8, 180, &s.filter.params.resonance},
+	{"dc", "dc blocker", DCBLOCKER_COLOR, 40, 180, &s.blocker.params.freq},
 };
 
 struct slider matrix_sliders[n_sources][n_sinks];

@@ -6,6 +6,7 @@
 #include "folder.h"
 #include "filter.h"
 #include "panner.h"
+#include "dcblocker.h"
 #include "types.h"
 
 struct synth {
@@ -16,6 +17,7 @@ struct synth {
 	struct filter filter;
 	struct panner panner1;
 	struct panner panner2;
+	struct dcblocker blocker;
 
 	struct matrix m;
 

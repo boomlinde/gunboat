@@ -21,6 +21,14 @@ The folding multipliers with the default settings work as bipolar amplifiers
 except that when the input signal exceeds the output range, the input signal
 folds back on itself. Inputs a and b and the scale value are multiplied
 
+DC blocker
+----------
+
+Feedback networks can result in unpredictable low frequency sound and standing
+waves. The audio outputs pass through a DC blocker to prevent this. The
+cut-off frequency of the blocker can be set with a slider and ranges from 5 Hz
+at its lowest setting to 100 Hz at its highest.
+
 Matrix
 ------
 

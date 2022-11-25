@@ -8,6 +8,7 @@
 #include "panner.h"
 #include "misc.h"
 #include "types.h"
+#include "dcblocker.h"
 
 void synth_tick(struct synth *s, value_t rate)
 {
@@ -27,12 +28,13 @@ void synth_tick(struct synth *s, value_t rate)
 	s->panner1.bus_pan = s->m.sinks[sink_panner1];
 	s->panner2.bus_pan = s->m.sinks[sink_panner2];
 
-	s->out_left = s->panner1.out_left * s->m.sinks[sink_out1];
-	s->out_right = s->panner1.out_right * s->m.sinks[sink_out1];
-	s->out_left += s->panner2.out_left * s->m.sinks[sink_out2];
-	s->out_right += s->panner2.out_right * s->m.sinks[sink_out2];
-	s->out_left = clamp(s->out_left);
-	s->out_right = clamp(s->out_right);
+	s->blocker.left.in = clamp(s->panner1.out_left * s->m.sinks[sink_out1] + s->panner2.out_left * s->m.sinks[sink_out2]);
+	s->blocker.right.in = clamp(s->panner1.out_right * s->m.sinks[sink_out1] + s->panner2.out_right * s->m.sinks[sink_out2]);
+
+	dcblocker_tick(&s->blocker, rate);
+
+	s->out_left = s->blocker.left.out;
+	s->out_right = s->blocker.right.out;
 
 	osc_tick(&s->osc1, rate);
 	osc_tick(&s->osc2, rate);

@@ -11,7 +11,7 @@ CFLAGS = -flto -O3 -Wall $(shell $(PKGCONFIG) --cflags $(libs))
 
 $(bin): $(objects)
 
-$(bin).o: $(bin).c font.h synth.h types.h
+$(bin).o: $(bin).c font.h synth.h dcblocker.h filter.h folder.h matrix.h misc.h osc.h panner.h random.h types.h
 
 osc.o: osc.c osc.h misc.h types.h
 

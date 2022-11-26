@@ -26,6 +26,7 @@
 #define FILTER_COLOR 0xb020b0
 #define PANNER_COLOR 0x8080b0
 #define DCBLOCKER_COLOR 0x2080b0
+#define VOLUME_COLOR 0x303080
 
 void text_puts(int x, int y, char *const s);
 
@@ -76,6 +77,7 @@ struct synth s = {
 	.folder2 = { .params = { .scale = 1.0/16.0 }, .polarity = -1.0, },
 	.filter = { .params = { .resonance = 0.5, }, },
 	.panner = { .params = { .pan = 0.5, }, },
+	.volume = 1.0,
 };
 
 struct slider sliders[] = {
@@ -95,8 +97,9 @@ struct slider sliders[] = {
 	{"*2", "folding multiplier 2 scale", FOLDER_COLOR, 40,116, &s.folder2.params.scale},
 	{"><", "audio output panning", PANNER_COLOR, 72, 116, &s.panner.params.pan},
 
-	{"fr", "filter resonance", FILTER_COLOR, 24, 148, &s.filter.params.resonance},
-	{"dc", "dc blocker", DCBLOCKER_COLOR, 56, 148, &s.blocker.params.freq},
+	{"fr", "filter resonance", FILTER_COLOR, 8, 148, &s.filter.params.resonance},
+	{"dc", "dc blocker", DCBLOCKER_COLOR, 40, 148, &s.blocker.params.freq},
+	{"vol", "master volume", VOLUME_COLOR, 72, 148, &s.volume},
 };
 
 struct slider matrix_sliders[n_sources][n_sinks];

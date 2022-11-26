@@ -23,6 +23,8 @@ struct synth {
 
 	struct matrix m;
 
+	param_t volume;
+
 	value_t out_left;
 	value_t out_right;
 };

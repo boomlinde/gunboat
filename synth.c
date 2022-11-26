@@ -27,8 +27,8 @@ void synth_tick(struct synth *s, value_t rate)
 	s->filter.bus_input = s->m.sinks[sink_filter_input];
 	s->panner.bus_pan = s->m.sinks[sink_panner];
 
-	s->blocker.left.in = clamp(s->panner.out_left * s->m.sinks[sink_out]);
-	s->blocker.right.in = clamp(s->panner.out_right * s->m.sinks[sink_out]);
+	s->blocker.left.in = clamp(s->panner.out_left * s->m.sinks[sink_out]) * s->volume;
+	s->blocker.right.in = clamp(s->panner.out_right * s->m.sinks[sink_out]) * s->volume;
 
 	dcblocker_tick(&s->blocker, rate);
 

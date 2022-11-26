@@ -13,8 +13,13 @@ struct folder {
 	value_t bus_a;
 	value_t bus_b;
 	value_t out;
+
+	value_t f1;
+
+	value_t coefficient;
+	value_t rate;
 };
 
-void folder_tick(struct folder *f);
+void folder_tick(struct folder *f, value_t rate);
 
 #endif /* _FOLDER_H_ */

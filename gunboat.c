@@ -1,7 +1,7 @@
+#include <SDL.h>
 #include <stdio.h>
 #include <time.h>
 #include <stddef.h>
-#include <SDL.h>
 #include <math.h>
 
 #include "font.h"

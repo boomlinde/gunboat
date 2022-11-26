@@ -40,8 +40,8 @@ void synth_tick(struct synth *s, value_t rate)
 	osc_tick(&s->osc3, rate);
 	random_tick(&s->random, rate);
 	filter_tick(&s->filter, rate);
-	folder_tick(&s->folder1);
-	folder_tick(&s->folder2);
+	folder_tick(&s->folder1, rate);
+	folder_tick(&s->folder2, rate);
 	panner_tick(&s->panner);
 
 	s->m.sources[source_folder1] = s->folder1.out;

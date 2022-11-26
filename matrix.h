@@ -14,8 +14,7 @@ enum sources {
 	source_filter_hp,
 	source_filter_bp,
 	source_unit,
-	source_out1,
-	source_out2,
+	source_out,
 	n_sources,
 };
 
@@ -39,11 +38,9 @@ enum sinks {
 	sink_filter_cutoff,
 	sink_filter_input,
 
-	sink_panner1,
-	sink_panner2,
+	sink_panner,
 
-	sink_out1,
-	sink_out2,
+	sink_out,
 	n_sinks,
 };
 

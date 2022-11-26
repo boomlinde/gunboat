@@ -11,8 +11,7 @@ char *source_names[] = {
 	[source_filter_hp] = "highpass filter",
 	[source_filter_bp] = "bandpass filter",
 	[source_unit] = "unit",
-	[source_out1] = "output 1 feedback",
-	[source_out2] = "output 2 feedback",
+	[source_out] = "audio output feedback",
 };
 
 char *sink_names[] = {
@@ -29,10 +28,8 @@ char *sink_names[] = {
 	[sink_folder2_b] = "folding multiplier 2B",
 	[sink_filter_cutoff] = "filter cutoff",
 	[sink_filter_input] = "filter input",
-	[sink_panner1] = "panner 1 pan",
-	[sink_panner2] = "panner 2 pan",
-	[sink_out1] = "output 1",
-	[sink_out2] = "output 2",
+	[sink_panner] = "output panning",
+	[sink_out] = "audio output",
 };
 
 char *source_abbrev[] = {
@@ -46,8 +43,7 @@ char *source_abbrev[] = {
 	[source_filter_hp] = "hp",
 	[source_filter_bp] = "bp",
 	[source_unit] = "+1",
-	[source_out1] = "~>",
-	[source_out2] = "<~",
+	[source_out] = "<>",
 };
 
 char *sink_abbrev[] = {
@@ -64,10 +60,8 @@ char *sink_abbrev[] = {
 	[sink_folder2_b] = "b2",
 	[sink_filter_cutoff] = "/f",
 	[sink_filter_input] = ">f",
-	[sink_panner1] = "p1",
-	[sink_panner2] = "p2",
-	[sink_out1] = "~>",
-	[sink_out2] = "<~",
+	[sink_panner] = "><",
+	[sink_out] = "<>",
 };
 
 void matrix_tick(struct matrix *m)

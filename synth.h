@@ -18,8 +18,7 @@ struct synth {
 	struct folder folder1;
 	struct folder folder2;
 	struct filter filter;
-	struct panner panner1;
-	struct panner panner2;
+	struct panner panner;
 	struct dcblocker blocker;
 
 	struct matrix m;

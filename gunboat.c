@@ -8,8 +8,8 @@
 #include "synth.h"
 #include "types.h"
 
-#define WIDTH 468
-#define HEIGHT 268
+#define WIDTH 428
+#define HEIGHT 248
 
 #define SL_SIZE 24
 #define SL_SEP ((SL_SIZE * 4) / 3)
@@ -75,8 +75,7 @@ struct synth s = {
 	.folder1 = { .params = { .scale = 1.0/16.0 }, },
 	.folder2 = { .params = { .scale = 1.0/16.0 }, },
 	.filter = { .params = { .resonance = 0.5, }, },
-	.panner1 = { .params = { .pan = 0.5, }, },
-	.panner2 = { .params = { .pan = 0.5, }, },
+	.panner = { .params = { .pan = 0.5, }, },
 };
 
 struct slider sliders[] = {
@@ -94,12 +93,10 @@ struct slider sliders[] = {
 
 	{"*1", "folding multiplier 1 scale", FOLDER_COLOR, 8, 116, &s.folder1.params.scale},
 	{"*2", "folding multiplier 2 scale", FOLDER_COLOR, 40,116, &s.folder2.params.scale},
+	{"><", "audio output panning", PANNER_COLOR, 72, 116, &s.panner.params.pan},
 
-	{"p1", "panner 1", PANNER_COLOR, 8, 148, &s.panner1.params.pan},
-	{"p2", "panner 2", PANNER_COLOR, 40, 148, &s.panner2.params.pan},
-
-	{"fr", "filter resonance", FILTER_COLOR, 8, 180, &s.filter.params.resonance},
-	{"dc", "dc blocker", DCBLOCKER_COLOR, 40, 180, &s.blocker.params.freq},
+	{"fr", "filter resonance", FILTER_COLOR, 24, 148, &s.filter.params.resonance},
+	{"dc", "dc blocker", DCBLOCKER_COLOR, 56, 148, &s.blocker.params.freq},
 };
 
 struct slider matrix_sliders[n_sources][n_sinks];

@@ -55,8 +55,7 @@ Matrix sources
 - `hp`: filter high-pass output
 - `bp`: filter band-pass output
 - `+1`: unit; simply a high signal
-- `~>`: output 1 feedback
-- `<~`: output 2 feedback
+- `<>`: audio output feedback
 
 Matrix sinks
 ------------
@@ -74,5 +73,5 @@ Matrix sinks
 - `b2`: folder 2 factor B
 - `/f`: filter cut-off frequency
 - `>f`: filter input
-- `~>`: output 1
-- `<~`: output 2
+- `><`: audio output panning
+- `<>`: audio output

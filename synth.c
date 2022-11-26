@@ -25,11 +25,10 @@ void synth_tick(struct synth *s, value_t rate)
 	s->folder2.bus_b = s->m.sinks[sink_folder2_b];
 	s->filter.bus_cutoff = s->m.sinks[sink_filter_cutoff];
 	s->filter.bus_input = s->m.sinks[sink_filter_input];
-	s->panner1.bus_pan = s->m.sinks[sink_panner1];
-	s->panner2.bus_pan = s->m.sinks[sink_panner2];
+	s->panner.bus_pan = s->m.sinks[sink_panner];
 
-	s->blocker.left.in = clamp(s->panner1.out_left * s->m.sinks[sink_out1] + s->panner2.out_left * s->m.sinks[sink_out2]);
-	s->blocker.right.in = clamp(s->panner1.out_right * s->m.sinks[sink_out1] + s->panner2.out_right * s->m.sinks[sink_out2]);
+	s->blocker.left.in = clamp(s->panner.out_left * s->m.sinks[sink_out]);
+	s->blocker.right.in = clamp(s->panner.out_right * s->m.sinks[sink_out]);
 
 	dcblocker_tick(&s->blocker, rate);
 
@@ -43,8 +42,7 @@ void synth_tick(struct synth *s, value_t rate)
 	filter_tick(&s->filter, rate);
 	folder_tick(&s->folder1);
 	folder_tick(&s->folder2);
-	panner_tick(&s->panner1);
-	panner_tick(&s->panner2);
+	panner_tick(&s->panner);
 
 	s->m.sources[source_folder1] = s->folder1.out;
 	s->m.sources[source_folder2] = s->folder2.out;
@@ -55,8 +53,7 @@ void synth_tick(struct synth *s, value_t rate)
 	s->m.sources[source_osc2_out] = s->osc2.out;
 	s->m.sources[source_osc3_out] = s->osc3.out;
 	s->m.sources[source_random] = s->random.out;
-	s->m.sources[source_out1] = s->m.sinks[sink_out1];
-	s->m.sources[source_out2] = s->m.sinks[sink_out2];
+	s->m.sources[source_out] = s->m.sinks[sink_out];
 	s->m.sources[source_unit] = 1.0;
 
 	matrix_tick(&s->m);

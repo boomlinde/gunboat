@@ -72,8 +72,8 @@ struct synth s = {
 	.osc1 = { .params = { .pitch = 0.5, .finetune = 0.5, .range = 1.0, }, },
 	.osc2 = { .params = { .pitch = 0.5, .finetune = 0.5, .range = 1.0, }, },
 	.osc3 = { .params = { .pitch = 0.5, .finetune = 0.5, .range = 1.0, }, },
-	.folder1 = { .params = { .scale = 1.0/16.0 }, },
-	.folder2 = { .params = { .scale = 1.0/16.0 }, },
+	.folder1 = { .params = { .scale = 1.0/16.0 }, .polarity = 1.0, },
+	.folder2 = { .params = { .scale = 1.0/16.0 }, .polarity = -1.0, },
 	.filter = { .params = { .resonance = 0.5, }, },
 	.panner = { .params = { .pan = 0.5, }, },
 };

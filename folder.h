@@ -9,6 +9,7 @@ struct folder_ctrl {
 
 struct folder {
 	struct folder_ctrl params;
+	value_t polarity;
 	value_t bus_a;
 	value_t bus_b;
 	value_t out;

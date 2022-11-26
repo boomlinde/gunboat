@@ -10,5 +10,5 @@ value_t shaper(value_t level)
 
 void folder_tick(struct folder *f)
 {
-	f->out = shaper(f->bus_a * f->bus_b * f->params.scale * 16.0);
+	f->out = shaper(f->polarity * f->bus_a * f->bus_b * f->params.scale * 16.0);
 }

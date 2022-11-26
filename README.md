@@ -24,7 +24,8 @@ Folding multipliers
 
 The folding multipliers with the default settings work as bipolar amplifiers
 except that when the input signal exceeds the output range, the input signal
-folds back on itself. Inputs a and b and the scale value are multiplied
+folds back on itself. Inputs a and b and the scale value are multiplied. The
+second folding multiplier inverts the output.
 
 DC blocker
 ----------

@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 	int fullscreen = 0;
 	int return_value = 0;
 
-	SDL_bool integer_scale = SDL_TRUE;
+	SDL_bool integer_scale = SDL_FALSE;
 	SDL_Point mouse = {0};
 	SDL_Event e;
 	SDL_Point grabpoint = {0};

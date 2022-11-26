@@ -16,9 +16,11 @@ void synth_tick(struct synth *s, value_t rate)
 
 	s->osc1.bus_pitch = s->m.sinks[sink_osc1_pitch];
 	s->osc1.bus_phase_offset = s->m.sinks[sink_osc1_phase_offset];
-
 	s->osc2.bus_pitch = s->m.sinks[sink_osc2_pitch];
 	s->osc2.bus_phase_offset = s->m.sinks[sink_osc2_phase_offset];
+	s->osc3.bus_pitch = s->m.sinks[sink_osc3_pitch];
+	s->osc3.bus_phase_offset = s->m.sinks[sink_osc3_phase_offset];
+
 	s->folder1.bus_a = s->m.sinks[sink_folder1_a];
 	s->folder1.bus_b = s->m.sinks[sink_folder1_b];
 	s->folder2.bus_a = s->m.sinks[sink_folder2_a];
@@ -38,6 +40,7 @@ void synth_tick(struct synth *s, value_t rate)
 
 	osc_tick(&s->osc1, rate);
 	osc_tick(&s->osc2, rate);
+	osc_tick(&s->osc3, rate);
 	filter_tick(&s->filter, rate);
 	folder_tick(&s->folder1);
 	folder_tick(&s->folder2);
@@ -51,6 +54,7 @@ void synth_tick(struct synth *s, value_t rate)
 	s->m.sources[source_filter_bp] = s->filter.out_bp;
 	s->m.sources[source_osc1_out] = s->osc1.out;
 	s->m.sources[source_osc2_out] = s->osc2.out;
+	s->m.sources[source_osc3_out] = s->osc3.out;
 	s->m.sources[source_out1] = s->m.sinks[sink_out1];
 	s->m.sources[source_out2] = s->m.sinks[sink_out2];
 	s->m.sources[source_unit] = 1.0;

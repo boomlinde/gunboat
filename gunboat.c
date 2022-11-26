@@ -8,19 +8,20 @@
 #include "synth.h"
 #include "types.h"
 
-#define WIDTH 376
-#define HEIGHT 248
+#define WIDTH 448
+#define HEIGHT 268
 
 #define SL_SIZE 24
 #define SL_SEP ((SL_SIZE * 4) / 3)
 
 #define MATRIX_SL_SIZE 16
 #define MATRIX_SL_SEP (MATRIX_SL_SIZE + 4)
-#define MATRIX_X 92
+#define MATRIX_X 124
 #define MATRIX_Y MATRIX_SL_SEP
 
 #define OSC1_COLOR 0xb02020
 #define OSC2_COLOR 0x20b0b0
+#define OSC3_COLOR 0xb06040
 #define FOLDER_COLOR 0x20b000
 #define FILTER_COLOR 0xb020b0
 #define PANNER_COLOR 0x8080b0
@@ -70,6 +71,7 @@ void param_smooth(struct param *p, value_t rate);
 struct synth s = {
 	.osc1 = { .params = { .pitch = 0.5, .finetune = 0.5, .range = 1.0, }, },
 	.osc2 = { .params = { .pitch = 0.5, .finetune = 0.5, .range = 1.0, }, },
+	.osc3 = { .params = { .pitch = 0.5, .finetune = 0.5, .range = 1.0, }, },
 	.folder1 = { .params = { .scale = 1.0/16.0 }, },
 	.folder2 = { .params = { .scale = 1.0/16.0 }, },
 	.filter = { .params = { .resonance = 0.5, }, },
@@ -85,6 +87,10 @@ struct slider sliders[] = {
 	{"~2", "pitch (oscillator 2)", OSC2_COLOR, 40, 20, &s.osc2.params.pitch},
 	{":2", "fine tune (oscillator 2)", OSC2_COLOR, 40, 52, &s.osc2.params.finetune},
 	{"^2", "range (oscillator 2)", OSC2_COLOR, 40, 84, &s.osc2.params.range},
+
+	{"~3", "pitch (oscillator 3)", OSC3_COLOR, 72, 20, &s.osc3.params.pitch},
+	{":3", "fine tune (oscillator 3)", OSC3_COLOR, 72, 52, &s.osc3.params.finetune},
+	{"^3", "range (oscillator 3)", OSC3_COLOR, 72, 84, &s.osc3.params.range},
 
 	{"*1", "folding multiplier 1 scale", FOLDER_COLOR, 8, 116, &s.folder1.params.scale},
 	{"*2", "folding multiplier 2 scale", FOLDER_COLOR, 40,116, &s.folder2.params.scale},

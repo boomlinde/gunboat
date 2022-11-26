@@ -106,6 +106,8 @@ struct slider matrix_sliders[n_sources][n_sinks];
 
 int nsliders = sizeof(sliders) / sizeof(sliders[0]);
 
+_Atomic int reset = 0;
+
 int main(int argc, char **argv)
 {
 	int i;
@@ -253,6 +255,9 @@ int main(int argc, char **argv)
 					break;
 				case SDLK_q:
 					if (e.key.keysym.mod & KMOD_CTRL) goto done;
+				case SDLK_F5:
+					reset = 1;
+					break;
 				}
 
 				break;
@@ -371,6 +376,11 @@ void audio_cb(void *data, Uint8 *stream, int len)
 	const value_t r = audiospec.freq;
 	const value_t a = exp(-2 * M_PI / (40.0 * 0.001 * r));
 	float *buf = (float *)stream;
+
+	if (reset) {
+		synth_reset(&s);
+		reset = 0;
+	}
 
 	for (i = 0; i < len / sizeof(buf[0]); i += 2) {
 		synth_tick(&s, r);

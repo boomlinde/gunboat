@@ -25,3 +25,11 @@ void folder_tick(struct folder *f, value_t rate)
 	f->f1 /= 2.0;
 	f->out = clamp(in * f->f1);
 }
+
+void folder_reset(struct folder *f)
+{
+	f->bus_a = 0.0;
+	f->bus_b = 0.0;
+	f->out = 0.0;
+	f->f1 = 0.0;
+}

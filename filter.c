@@ -20,3 +20,12 @@ void filter_tick(struct filter *f, value_t rate)
 	halftick(f, rate * 3.0, freq, q);
 	halftick(f, rate * 3.0, freq, q);
 }
+
+void filter_reset(struct filter *f)
+{
+	f->bus_cutoff = 0.0;
+	f->bus_input = 0.0;
+	f->out_lp = 0.0;
+	f->out_hp = 0.0;
+	f->out_bp = 0.0;
+}

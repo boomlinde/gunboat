@@ -21,5 +21,6 @@ struct dcblocker {
 };
 
 void dcblocker_tick(struct dcblocker *b, value_t rate);
+void dcblocker_reset(struct dcblocker *b);
 
 #endif /* _DCBLOCKER_H_ */

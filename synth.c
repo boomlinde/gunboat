@@ -59,3 +59,19 @@ void synth_tick(struct synth *s, value_t rate)
 
 	matrix_tick(&s->m);
 }
+
+void synth_reset(struct synth *s)
+{
+	osc_reset(&s->osc1);
+	osc_reset(&s->osc2);
+	osc_reset(&s->osc3);
+	random_reset(&s->random);
+	folder_reset(&s->folder1);
+	folder_reset(&s->folder2);
+	filter_reset(&s->filter);
+	panner_reset(&s->panner);
+	dcblocker_reset(&s->blocker);
+	matrix_reset(&s->m);
+	s->out_left = 0.0;
+	s->out_right = 0.0;
+}

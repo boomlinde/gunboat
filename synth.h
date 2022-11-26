@@ -30,5 +30,6 @@ struct synth {
 };
 
 void synth_tick(struct synth *s, value_t rate);
+void synth_reset(struct synth *s);
 
 #endif /* _SYNTH_H_ */

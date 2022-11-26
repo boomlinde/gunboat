@@ -16,5 +16,6 @@ struct panner {
 };
 
 void panner_tick(struct panner *p);
+void panner_reset(struct panner *p);
 
 #endif /* _PANNER_H_ */

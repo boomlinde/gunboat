@@ -76,3 +76,14 @@ void matrix_tick(struct matrix *m)
 		}
 	}
 }
+
+void matrix_reset(struct matrix *m)
+{
+	int i;
+	for (i = 0; i < n_sources; i++) {
+		m->sources[i] = 0.0;
+	}
+	for (i = 0; i < n_sinks; i++) {
+		m->sinks[i] = 0.0;
+	}
+}

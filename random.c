@@ -13,3 +13,10 @@ void random_tick(struct random *r, value_t rate)
 		r->phase = unitmod(r->phase);
 	}
 }
+
+void random_reset(struct random *r)
+{
+	r->phase = 0.0;
+	r->bus_freq = 0.0;
+	r->out = 0.0;
+}

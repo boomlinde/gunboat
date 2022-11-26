@@ -10,5 +10,6 @@ struct random {
 };
 
 void random_tick(struct random *r, value_t rate);
+void random_reset(struct random *r);
 
 #endif /* _RANDOM_H_ */

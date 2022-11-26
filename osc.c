@@ -19,3 +19,10 @@ void osc_tick(struct osc *o, value_t rate)
 	o->out = sin(M_PI * 2.0 * phase);
 	o->phase = unitmod(o->phase + freq / rate);
 }
+
+void osc_reset(struct osc *o)
+{
+	o->bus_pitch = 0.0;
+	o->bus_phase_offset = 0.0;
+	o->out = 0.0;
+}

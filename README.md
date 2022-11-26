@@ -13,6 +13,8 @@ Basic controls
 * Middle click a slider to set it to its max value
 * While hovering a slider, press backtick, 0 or number keys 1-9 to set the
   slider to an absolute value
+* Press the r key to reset the internal state of the synth engine. This will
+  not reset the parameters you've set.
 * Press the f key to toggle integer scaling. Turning it on looks nicer, but
   leaving it off uses the window more efficiently
 * Press alt+enter to toggle full screen mode

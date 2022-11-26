@@ -19,5 +19,6 @@ struct filter {
 };
 
 void filter_tick(struct filter *f, value_t rate);
+void filter_reset(struct filter *f);
 
 #endif /* _FILTER_H_ */

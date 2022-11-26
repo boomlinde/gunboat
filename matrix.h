@@ -57,6 +57,7 @@ struct matrix {
 };
 
 void matrix_tick(struct matrix *m);
+void matrix_reset(struct matrix *m);
 
 extern char *source_names[];
 extern char *sink_names[];

@@ -16,3 +16,16 @@ void dcblocker_tick(struct dcblocker *b, value_t rate)
 	monoblocker_tick(&b->left, r);
 	monoblocker_tick(&b->right, r);
 }
+
+static void monoblocker_reset(struct monoblocker *b)
+{
+	b->in = 0.0;
+	b->in_1 = 0.0;
+	b->out = 0.0;
+}
+
+void dcblocker_reset(struct dcblocker *b)
+{
+	monoblocker_reset(&b->left);
+	monoblocker_reset(&b->right);
+}

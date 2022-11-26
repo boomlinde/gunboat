@@ -20,5 +20,6 @@ struct osc {
 };
 
 void osc_tick(struct osc *o, value_t rate);
+void osc_reset(struct osc *o);
 
 #endif /* _OSC_H_ */

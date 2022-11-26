@@ -19,7 +19,7 @@ synth.o: osc.h matrix.h synth.h folder.h filter.h panner.h misc.h dcblocker.h ra
 
 matrix.o: matrix.c matrix.h types.h
 
-folder.o: folder.c folder.h types.h
+folder.o: folder.c folder.h misc.h types.h
 
 filter.o: filter.h misc.h types.h
 

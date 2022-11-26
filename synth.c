@@ -30,7 +30,8 @@ void synth_tick(struct synth *s, value_t rate)
 	s->blocker.left.in = clamp(s->panner.out_left * s->m.sinks[sink_out]) * s->volume;
 	s->blocker.right.in = clamp(s->panner.out_right * s->m.sinks[sink_out]) * s->volume;
 
-	dcblocker_tick(&s->blocker, rate);
+	dcblocker_tick(&s->blocker, rate * 2.0);
+	dcblocker_tick(&s->blocker, rate * 2.0);
 
 	s->out_left = s->blocker.left.out;
 	s->out_right = s->blocker.right.out;
@@ -53,7 +54,7 @@ void synth_tick(struct synth *s, value_t rate)
 	s->m.sources[source_osc2_out] = s->osc2.out;
 	s->m.sources[source_osc3_out] = s->osc3.out;
 	s->m.sources[source_random] = s->random.out;
-	s->m.sources[source_out] = s->m.sinks[sink_out];
+	s->m.sources[source_out] = clamp(s->m.sinks[sink_out]);
 	s->m.sources[source_unit] = 1.0;
 
 	matrix_tick(&s->m);

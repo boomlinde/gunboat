@@ -7,7 +7,7 @@ enum sources {
 	source_osc1_out,
 	source_osc2_out,
 	source_osc3_out,
-	source_noise,
+	source_random,
 	source_folder1,
 	source_folder2,
 	source_filter_lp,
@@ -28,6 +28,8 @@ enum sinks {
 
 	sink_osc3_pitch,
 	sink_osc3_phase_offset,
+
+	sink_random_freq,
 
 	sink_folder1_a,
 	sink_folder1_b,

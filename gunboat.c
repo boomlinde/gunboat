@@ -8,7 +8,7 @@
 #include "synth.h"
 #include "types.h"
 
-#define WIDTH 448
+#define WIDTH 468
 #define HEIGHT 268
 
 #define SL_SIZE 24

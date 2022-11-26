@@ -48,7 +48,7 @@ Matrix sources
 - `~1`: oscillator 1 output
 - `~2`: oscillator 2 output
 - `~3`: oscillator 3 output
-- `##`: white noise
+- `##`: clocked random output
 - `*1`: folding multiplier 1 output
 - `*2`: folding multiplier 2 output
 - `lp`: filter low-pass output
@@ -67,6 +67,7 @@ Matrix sinks
 - `/2`: oscillator 2 phase offset
 - `~3`: oscillator 3 pitch
 - `/3`: oscillator 3 phase offset
+- `#~`: clocked random clock speed
 - `a1`: folder 1 factor A
 - `b1`: folder 1 factor B
 - `a2`: folder 2 factor A

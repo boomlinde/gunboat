@@ -8,11 +8,13 @@
 #include "panner.h"
 #include "dcblocker.h"
 #include "types.h"
+#include "random.h"
 
 struct synth {
 	struct osc osc1;
 	struct osc osc2;
 	struct osc osc3;
+	struct random random;
 	struct folder folder1;
 	struct folder folder2;
 	struct filter filter;

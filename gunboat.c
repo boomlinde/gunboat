@@ -77,7 +77,7 @@ struct synth s = {
 	.folder2 = { .params = { .scale = 1.0/16.0 }, .polarity = -1.0, },
 	.filter = { .params = { .resonance = 0.5, }, },
 	.panner = { .params = { .pan = 0.5, }, },
-	.volume = 1.0,
+	.volume = 0.75,
 };
 
 struct slider sliders[] = {
